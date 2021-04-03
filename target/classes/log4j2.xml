@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" monitorInterval="1800" schema="Log4J-V2.2.xsd">
+    <Properties>
+        <property name="log_pattern">
+            %d{yyyy-MM-dd HH:mm:ss} [%t] [%c{1}.%M()] %-5level - %msg%xEx%n
+        </property>
+        <property name="log_path">
+            C:\Users\jjb-hz\Desktop\project\logs
+        </property>
+        <property name="file_name">
+            project.log
+        </property>
+        <property name="rolling_file_name">
+            C:\Users\jjb-hz\Desktop\project\logs\project-%d{yyyy-MM-dd}-%i.log.gz
+        </property>
+        <property name="error_file_name">
+            project_error.log
+        </property>
+        <property name="error_rolling_file_name">
+            C:\Users\jjb-hz\Desktop\project\logs\project_error-%d{yyyy-MM-dd}-%i.log.gz
+        </property>
+        <property name="every_file_size">10MB</property>
+        <property name="output_log_level">debug</property>
+    </Properties>
+
+    <Appenders>
+
+        <Console name="Console" target="SYSTEM_OUT">
+
+            <ThresholdFilter level="trace" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${log_pattern}" />
+        </Console>
+
+
+        <RollingFile name="RollingFile" fileName="${log_path}/${file_name}" filePattern="${rolling_file_name}" immediateFlush="false">
+            <PatternLayout pattern="${log_pattern}" />
+            <SizeBasedTriggeringPolicy size="${every_file_size}"/>
+            <Filters>
+                <MarkerFilter marker="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+                <TimeFilter start="20:00:00" end="05:00:00" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+        </RollingFile>
+
+        <RollingFile name="RollingFile" fileName="${log_path}/${file_name}" filePattern="${rolling_file_name}" immediateFlush="false">
+            <PatternLayout pattern="${log_pattern}" />
+            <SizeBasedTriggeringPolicy size="${every_file_size}"/>
+            <Filters>
+                <MarkerFilter marker="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+                <TimeFilter start="20:00:00" end="05:00:00" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+        </RollingFile>
+
+        <RollingFile name="RollingFile" fileName="${log_path}/${file_name}" filePattern="${rolling_file_name}" immediateFlush="false">
+            <PatternLayout pattern="${log_pattern}" />
+            <SizeBasedTriggeringPolicy size="${every_file_size}"/>
+            <Filters>
+                <MarkerFilter marker="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+                <TimeFilter start="20:00:00" end="05:00:00" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+        </RollingFile>
+
+        <RollingFile name="RollingFile" fileName="${log_path}/${file_name}" filePattern="${rolling_file_name}" immediateFlush="false">
+            <PatternLayout pattern="${log_pattern}" />
+            <SizeBasedTriggeringPolicy size="${every_file_size}"/>
+            <Filters>
+                <MarkerFilter marker="Fatal" onMatch="ACCEPT" onMismatch="DENY"/>
+                <TimeFilter start="20:00:00" end="05:00:00" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+        </RollingFile>
+
+
+
+
+
+        <RollingFile name="RollingFile" fileName="${log_path}/${file_name}" filePattern="${rolling_file_name}" immediateFlush="false">
+            <PatternLayout pattern="${log_pattern}" />
+            <SizeBasedTriggeringPolicy size="${every_file_size}"/>
+        </RollingFile>
+
+        <RollingFile name="RollingFile" fileName="${log_path}/${file_name}" filePattern="${rolling_file_name}" immediateFlush="false">
+            <PatternLayout pattern="${log_pattern}" />
+            <SizeBasedTriggeringPolicy size="${every_file_size}"/>
+        </RollingFile>
+
+        <RollingFile name="RollingFile" fileName="${log_path}/${file_name}" filePattern="${rolling_file_name}" immediateFlush="false">
+            <PatternLayout pattern="${log_pattern}" />
+            <SizeBasedTriggeringPolicy size="${every_file_size}"/>
+        </RollingFile>
+
+        <RollingFile name="RollingFile" fileName="${log_path}/${file_name}" filePattern="${rolling_file_name}" immediateFlush="false">
+            <PatternLayout pattern="${log_pattern}" />
+            <SizeBasedTriggeringPolicy size="${every_file_size}"/>
+        </RollingFile>
+
+
+
+
+
+
+
+
+
+    </Appenders>
+
+    <Loggers>
+
+        <root level="${output_log_level}">
+            <appender-ref ref="RollingFile"/>
+            <appender-ref ref="RollingErrorFile"/>
+            <appender-ref ref="Console"/>
+        </root>
+
+    </Loggers>
+</Configuration>
