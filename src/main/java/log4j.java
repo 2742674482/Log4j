@@ -1,4 +1,5 @@
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.MarkerManager;
 import org.apache.logging.log4j.core.Logger;
 
 public class log4j {
@@ -12,13 +13,15 @@ public class log4j {
     }
 
     public static void logAll() throws Exception {
-        LOG.trace("trace level log");
-        LOG.debug("debug level log");
-        LOG.info("info level log");
-        LOG.error("error level log");
-        LOG.fatal("fatal level log");
+        /*LOG.trace("trace level log");
+        LOG.debug("debug level log");*/
+        LOG.info(MarkerManager.getMarker("arraymarker"),"Hickory");
+        LOG.info("rrr");
+        LOG.info(MarkerManager.getMarker("arraymarkerr"),"dickory");
+        /*LOG.error("error level log");
+        LOG.fatal("fatal level log");*/
 
-        Thread.sleep(3000);
+        Thread.sleep(300);
     }
 
 
