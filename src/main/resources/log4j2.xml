@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="warn" monitorInterval="1800" schema="Log4J-V2.2.xsd">
+    <Properties>
+        <Property name="LOG_PATTERN">%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+    </Properties>
     <Appenders>
+
         <Console name="Console" target="SYSTEM_OUT">
 
-            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %c %x-%m%n " />
+            <PatternLayout pattern="%highlight{${LOG_PATTERN}} %x"/>
         </Console>
 
-        <File name="RollingFile1" fileName="File/DEBUG1.log" filePattern="Home/Desktop/log4j/project-%d{yyyy-MM-dd}-%i.log.gz">
-
+        <File name="File1" fileName="File/warn.log" append="false">
             <Filters>
-                <MarkerFilter marker="arraymarker" onMatch="ACCEPT" onMismatch="DENY"/>
+                <MarkerFilter marker="Hickory" onMatch="ACCEPT" onMismatch="DENY"/>
             </Filters>
         </File>
 
-        <File name="RollingFile2" fileName="File/DEBUG2.log" filePattern="Home/Desktop/log4j/project-%d{yyyy-MM-dd}-%i.log.gz">
-
+        <File name="File2" fileName="File/error.log" append="false">
             <Filters>
-                <MarkerFilter marker="arraymarkerr" onMatch="ACCEPT" onMismatch="DENY"/>
+                <MarkerFilter marker="dickory" onMatch="ACCEPT" onMismatch="DENY"/>
             </Filters>
         </File>
 
-        <File name="RollingFile3" fileName="File/info.log" filePattern="Home/Desktop/log4j/project-%d{yyyy-MM-dd}-%i.log.gz">
-
+        <File name="File3" fileName="File/info.log" append="false">
             <Filters>
                 <NoMarkerFilter onMatch="ACCEPT" onMismatch="DENY"/>
             </Filters>
         </File>
 
-        <File name="RollingFile4" fileName="File/night.log" filePattern="Home/Desktop/log4j/project-%d{yyyy-MM-dd}-%i.log.gz">
-
+        <File name="File4" fileName="File/night.log" append="false">
             <Filters>
-                <TimeFilter start="20:00:00" end="05:00:00" onMatch="ACCEPT" onMismatch="DENY"/>
+                <TimeFilter start="05:00:00" end="20:00:00" onMatch="DENY" onMismatch="ACCEPT"/>
             </Filters>
+
         </File>
     </Appenders>
 
     <Loggers>
 
-        <root level="info">
-            <appender-ref ref="RollingFile1"/>
-            <appender-ref ref="RollingFile2"/>
-            <appender-ref ref="RollingFile3"/>
-            <appender-ref ref="RollingFile4"/>
+        <root level="all">
+            <appender-ref ref="File1"/>
+            <appender-ref ref="File2"/>
+            <appender-ref ref="File3"/>
+            <appender-ref ref="File4"/>
             <appender-ref ref="Console"/>
         </root>
         
