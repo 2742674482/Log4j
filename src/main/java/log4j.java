@@ -12,7 +12,7 @@ public class log4j {
 
         for (int i = 1; i < 100; i++)
         {
-            ThreadContext.put("iteration",String.format("%d",i));
+           
 
 
             LOG.info("Baa, baa, black sheep,");
