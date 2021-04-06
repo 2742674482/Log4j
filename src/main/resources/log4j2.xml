@@ -11,27 +11,27 @@
         </Console>
 
         <File name="File1" fileName="File/warn.log" append="false">
-            <Filters>
+            
                 <MarkerFilter marker="Hickory" onMatch="ACCEPT" onMismatch="DENY"/>
-            </Filters>
+
         </File>
 
         <File name="File2" fileName="File/error.log" append="false">
-            <Filters>
+
                 <MarkerFilter marker="dickory" onMatch="ACCEPT" onMismatch="DENY"/>
-            </Filters>
+
         </File>
 
         <File name="File3" fileName="File/info.log" append="false">
-            <Filters>
+
                 <NoMarkerFilter onMatch="ACCEPT" onMismatch="DENY"/>
-            </Filters>
+
         </File>
 
         <File name="File4" fileName="File/night.log" append="false">
-            <Filters>
+
                 <TimeFilter start="05:00:00" end="20:00:00" onMatch="DENY" onMismatch="ACCEPT"/>
-            </Filters>
+
 
         </File>
     </Appenders>
