@@ -9,10 +9,9 @@ public class log4j {
     public static void main(String[] args) throws InterruptedException {
 
 
-
         for (int i = 1; i < 100; i++)
         {
-
+            ThreadContext.put("ite",String.format("%d",i));
             LOG.info("Baa, baa, black sheep,");
             LOG.info("Have you any wool?");
             LOG.info("Yes, sir, yes, sir,");
@@ -20,7 +19,12 @@ public class log4j {
             LOG.error(MarkerManager.getMarker("dickory"),"One for the master");
 
             Thread.sleep(300);
+
         }
+
+
+
+
     }
 
 
